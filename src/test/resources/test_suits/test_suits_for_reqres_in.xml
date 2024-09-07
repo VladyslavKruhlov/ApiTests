@@ -3,9 +3,9 @@
 <suite name="Test suite" parallel="classes" thread-count="1">
     <test name="Reqres in API tests">
         <classes>
-            <class name="api.reqres_in_tests.SingleUser"/>
-            <class name="api.reqres_in_tests.Resources"/>
-            <class name="api.reqres_in_tests.Login"/>
+            <class name="api.reqres_in_tests_old_test.SingleUser"/>
+            <class name="api.reqres_in_tests_old_test.Resources"/>
+            <class name="api.reqres_in_tests_old_test.Login"/>
         </classes>
     </test>
 </suite>

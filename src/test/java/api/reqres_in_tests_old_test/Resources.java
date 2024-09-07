@@ -1,4 +1,4 @@
-package api.reqres_in_tests;
+package api.reqres_in_tests_old_test;
 
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
@@ -7,12 +7,9 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
+import static api.Constants.*;
 
 public class Resources {
-    String baseUrl = "https://reqres.in";
-    String endPointUrl = "/api/unknown/";
-    int resourceId = 2;
-    int incorrectResourceId = 23;
 
     @Test(groups = "ReqresIn", description = "Get Single Resource info")
     public void getSingleResourceInfo() {
@@ -20,12 +17,12 @@ public class Resources {
                 .log().all()
                 .when()
                 .log().all()
-                .get(baseUrl+endPointUrl+resourceId)
+                .get(REQRES_IN_URL+REQRES_IN_ENDPOINT_FOR_RESOURCE+REQRES_IN_RESOURCE_ID)
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .body(matchesJsonSchemaInClasspath("single-resource-schema.json"))
-                .body("data.id", equalTo(resourceId))
+                .body("data.id", equalTo(REQRES_IN_RESOURCE_ID))
                 .body("data.name", equalTo("fuchsia rose"))
                 .body("support.url", equalTo("https://reqres.in/#support-heading"));
     }
@@ -36,13 +33,13 @@ public class Resources {
                 .log().all()
                 .when()
                 .log().all()
-                .get(baseUrl+endPointUrl)
+                .get(REQRES_IN_URL+REQRES_IN_ENDPOINT_FOR_RESOURCE)
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .body(matchesJsonSchemaInClasspath("list-resources-schema.json"))
                 .body("data.size()", greaterThan(0))
-                .body("data[0].name", equalTo("cerulean"));
+                .body("data[0].name", equalTo(REQRES_IN_FIRST_RESOURCE_DATA_NAME));
     }
 
     @Test(groups = "ReqresIn", description = "Single Resource not found")
@@ -51,7 +48,7 @@ public class Resources {
                 .log().all()
                 .when()
                 .log().all()
-                .get(baseUrl+endPointUrl+incorrectResourceId)
+                .get(REQRES_IN_URL+REQRES_IN_ENDPOINT_FOR_RESOURCE+REQRES_IN_INCORRECT_RESOURCE_ID)
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_NOT_FOUND)

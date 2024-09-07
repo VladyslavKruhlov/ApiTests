@@ -1,4 +1,4 @@
-package api.reqres_in_tests;
+package api.reqres_in_tests_old_test;
 
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;

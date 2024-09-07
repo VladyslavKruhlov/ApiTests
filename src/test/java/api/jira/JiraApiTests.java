@@ -6,7 +6,7 @@ import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static pojo.Constants.*;
+import static api.Constants.*;
 
 public class JiraApiTests {
 
@@ -16,8 +16,8 @@ public class JiraApiTests {
             "       {\n" +
             "          \"key\": \"U3QAJ201023\"\n" +
             "       },\n" +
-            "       \"summary\": \"Example for autotests \",\n" +
-            "       \"description\": \"Test for API which related with created bug ticket \",\n" +
+            "       \"summary\": \"Example for autotests\",\n" +
+            "       \"description\": \"Test for API which related with created bug ticket\",\n" +
             "       \"issuetype\": {\n" +
             "          \"name\": \"Bug\"\n" +
             "       }\n" +
@@ -32,7 +32,7 @@ public class JiraApiTests {
                 .log().all()
                 .auth()
                 .preemptive()
-                .basic("r.chel", "r.chel")
+                .basic(JIRA_USERNAME, JIRA_PASSWORD)
                 .header("Content-Type", "application/json")
                 .body(requestBody)
                 .when()

@@ -1,4 +1,4 @@
-package api.reqres_in_tests;
+package api.reqres_in_tests_old_test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -6,9 +6,9 @@ import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static api.Constants.*;
+
 public class Login {
-    String baseUrl = "https://reqres.in";
-    String endPointUrl = "/api/login";
 
     String bodyForSuccessfulLogin = "{\n" +
             "    \"email\": \"eve.holt@reqres.in\",\n" +
@@ -18,7 +18,7 @@ public class Login {
             "    \"email\": \"peter@klaven\"\n" +
             "}";
 
-    @Test (groups = "ReqresIn", description = "Successful login")
+    @Test(groups = "ReqresIn", description = "Successful login")
     public void loginSuccessful() {
         Response response = RestAssured.given()
                 .log().all()
@@ -26,7 +26,7 @@ public class Login {
                 .body(bodyForSuccessfulLogin)
                 .when()
                 .log().all()
-                .post(baseUrl+endPointUrl);
+                .post(REQRES_IN_URL + REQURES_IN_ENDPOINT_FOR_LOGIN);
 
         int statusCode = response.statusCode();
         String token = response.jsonPath().getString("token");
@@ -34,10 +34,10 @@ public class Login {
         Assert.assertEquals(statusCode, HttpStatus.SC_OK);
         Assert.assertFalse(token.isEmpty());
 
-        System.out.println("Login successful \n status code: "+ statusCode + "\n token: "+token);
+        System.out.println("Login successful \n status code: " + statusCode + "\n token: " + token);
     }
 
-    @Test (groups = "ReqresIn", description = "Unsuccessful login")
+    @Test(groups = "ReqresIn", description = "Unsuccessful login")
     public void loginUnsuccessful() {
         Response response = RestAssured.given()
                 .log().all()
@@ -45,7 +45,7 @@ public class Login {
                 .body(bodyForUnsuccessfulLogin)
                 .when()
                 .log().all()
-                .post(baseUrl+endPointUrl);
+                .post(REQRES_IN_URL + REQURES_IN_ENDPOINT_FOR_LOGIN);
 
         int statusCode = response.statusCode();
         String errorField = response.jsonPath().getString("error");
@@ -53,6 +53,6 @@ public class Login {
         Assert.assertEquals(statusCode, HttpStatus.SC_BAD_REQUEST);
         Assert.assertTrue(errorField.equals("Missing password"));
 
-        System.out.println("Unsuccessful login \n status code: "+ statusCode + "\n error: "+errorField);
+        System.out.println("Unsuccessful login \n status code: " + statusCode + "\n error: " + errorField);
     }
 }

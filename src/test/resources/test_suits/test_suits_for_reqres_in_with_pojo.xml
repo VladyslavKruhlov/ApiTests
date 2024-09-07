@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test suite" parallel="classes" thread-count="1">
+    <test name="Reqres in API tests with pojo class">
+        <classes>
+            <class name="api.reqres_in_test_with_pojo.Login"/>
+            <class name="api.reqres_in_test_with_pojo.SingleUser"/>
+            <class name="api.reqres_in_test_with_pojo.ResourceTest"/>
+            <class name="api.reqres_in_test_with_pojo.CRUDforUser"/>
+        </classes>
+    </test>
+</suite>
