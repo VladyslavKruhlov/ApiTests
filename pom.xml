@@ -29,7 +29,7 @@
                 <version>3.3.0</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/test_suits/test_suite_for_the_internet.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/test_suits/test_suits_for_reqres_in_with_pojo.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
