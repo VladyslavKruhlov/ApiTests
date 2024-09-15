@@ -1,6 +1,7 @@
 package api.reqres_in_test_with_pojo;
 
 import api.reqres_in_test_with_pojo.pojo.entity.user.get_user_info.UserFields;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
@@ -15,6 +16,12 @@ import static org.testng.Assert.assertEquals;
 public class SingleUser {
 
     @Test(groups = "ReqresInPojo", description = "Get single user info")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("v.kruhlov")
+    @Epic("API")
+    @Feature("CRUD")
+    @Story("Get method")
+    @Link(name = "Website", url = "https://reqres.in/")
     public void getSingleUserInfo() {
         Response response = sendGetRequest(
                 requestSpecification,
@@ -36,6 +43,12 @@ public class SingleUser {
     }
 
     @Test(groups = "ReqresInPojo", description = "Single user info not found")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("v.kruhlov")
+    @Epic("API")
+    @Feature("CRUD")
+    @Story("Get method")
+    @Link(name = "Website", url = "https://reqres.in/")
     public void getSingleUserInfoNotFound() {
         Response response = sendGetRequest(
                 requestSpecification,

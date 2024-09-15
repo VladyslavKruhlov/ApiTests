@@ -4,6 +4,7 @@ import api.reqres_in_test_with_pojo.data_provider.UserDataProvider;
 import api.reqres_in_test_with_pojo.pojo.body_request.ReqresInCRUDRequest;
 import api.reqres_in_test_with_pojo.pojo.entity.user.CRUD_user.UserFieldsForCreation;
 import api.reqres_in_test_with_pojo.pojo.entity.user.CRUD_user.UserFieldsUpdate;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
@@ -17,7 +18,14 @@ import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
 
 public class CRUDforUser {
-    @Test(groups = "ReqresInPojo", description = "Create user")
+    @Test(groups = "ReqresInPojo")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("v.kruhlov")
+    @Description("TestCase: K1, CRUD operation (create)")
+    @Epic("API")
+    @Feature("CRUD")
+    @Story("Creation")
+    @Link(name = "Website", url = "https://reqres.in/")
     public void createUser() {
         ReqresInCRUDRequest reqresInCRUDRequest = new ReqresInCRUDRequest(
                 REQRES_IN_USER_NAME_FOR_NEW_USER,
@@ -44,7 +52,14 @@ public class CRUDforUser {
         assertThat(user.getCreatedAt(), not(emptyOrNullString()));
     }
 
-    @Test(groups = "ReqresInPojo", description = "Update user")
+    @Test(groups = "ReqresInPojo")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("v.kruhlov")
+    @Description("TestCase: K2, CRUD operation (update)")
+    @Epic("API")
+    @Feature("CRUD")
+    @Story("Update")
+    @Link(name = "Website", url = "https://reqres.in/")
     public void updateUser() {
         ReqresInCRUDRequest reqresInCRUDRequest = new ReqresInCRUDRequest(
                 REQRES_IN_USER_NAME_FOR_NEW_USER,
@@ -71,7 +86,14 @@ public class CRUDforUser {
         assertThat(userFieldsUpdate.getUpdatedAt(), not(emptyOrNullString()));
     }
 
-    @Test(groups = "ReqresInPojo", description = "Delete user")
+    @Test(groups = "ReqresInPojo")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("v.kruhlov")
+    @Description("TestCase: K3, CRUD operation (delete)")
+    @Epic("API")
+    @Feature("CRUD")
+    @Story("Delete")
+    @Link(name = "Website", url = "https://reqres.in/")
     public void deleteUser() {
         Response response = sendDeleteRequest(
                 requestSpecification,
@@ -86,6 +108,13 @@ public class CRUDforUser {
     }
 
         @Test(groups = "ReqresInPojo", description = "Create user", dataProvider = "userData", dataProviderClass = UserDataProvider.class)
+        @Severity(SeverityLevel.CRITICAL)
+        @Owner("v.kruhlov")
+        @Description("TestCase: K4, CRUD operation (create several users)")
+        @Epic("API")
+        @Feature("CRUD")
+        @Story("Creation")
+        @Link(name = "Website", url = "https://reqres.in/")
         public void createUsers(String name, String job) {
             ReqresInCRUDRequest reqresInCRUDRequest = new ReqresInCRUDRequest(name, job);
 

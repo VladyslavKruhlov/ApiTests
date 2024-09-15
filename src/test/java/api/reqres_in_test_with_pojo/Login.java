@@ -1,6 +1,7 @@
 package api.reqres_in_test_with_pojo;
 
 import api.reqres_in_test_with_pojo.pojo.body_request.ReqresInLoginRequest;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
@@ -12,7 +13,14 @@ import static api.reqres_in_test_with_pojo.specification.RequestSpecification.re
 import static org.hamcrest.Matchers.containsString;
 
 public class Login {
-    @Test(groups = "ReqresInPojo", description = "Successful login with pojo")
+    @Test(groups = "ReqresInPojo")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("v.kruhlov")
+    @Description("TestCase: K5, Login with correct data")
+    @Epic("API")
+    @Feature("Login")
+    @Story("Authentication")
+    @Link(name = "Website", url = "https://reqres.in/")
     public void loginSuccessful() {
 
         ReqresInLoginRequest reqresInLoginRequest = new ReqresInLoginRequest(
@@ -35,7 +43,14 @@ public class Login {
                 .body("token", containsString(REQRES_IN_TOKEN));
     }
 
-    @Test (groups = "ReqresInPojo", description = "Unsuccessful login with pojo")
+    @Test (groups = "ReqresInPojo")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("v.kruhlov")
+    @Description("TestCase: K6, Login with incorrect data")
+    @Epic("API")
+    @Feature("Login")
+    @Story("Authentication")
+    @Link(name = "Website", url = "https://reqres.in/")
     public void loginUnsuccessful() {
 
         ReqresInLoginRequest reqresInLoginRequest = new ReqresInLoginRequest(
